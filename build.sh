@@ -17,7 +17,7 @@ KERNEL_DIR=$(pwd)
 PRO_PATH="$KERNEL_DIR/.."
 
 # Toolchain Directory
-TLDR="$PRO_PATH/../toolchains"
+TLDR="$PRO_PATH/toolchains"
 
 # Anykernel Directories
 AK3_DIR="$PRO_PATH/AnyKernel3"
@@ -298,12 +298,6 @@ zipper()
 	rm -rf "$KERNEL_DIR"/out/CosmicFresh*
 	mv -f "$KERNEL_DIR"/work/"$TARGET" "$DTBO_PATH"/dtbo.img "$AK3_DIR"
 	find "$DTB_PATH"/vendor/*/* -name '*.dtb' -exec cat {} + > "$AK3_DIR"/dtb
-		# shellcheck disable=SC2046
-		# cp breaks with advised follow up
-		cp $(find "$MOD_PATH" -name '*.ko') "$AKVDR"/
-		cp "$MOD_PATH"/modules.{alias,dep,softdep} "$AKVDR"/
-		cp "$MOD_PATH"/modules.order "$AKVDR"/modules.load
-	fi
 
 	LAST_COMMIT=$(git show -s --format=%s)
 	LAST_HASH=$(git rev-parse --short HEAD)

@@ -1675,6 +1675,9 @@ static void _sde_crtc_blend_setup_mixer(struct drm_crtc *crtc,
 		}
 #endif
 	}
+
+end:
+	kfree(pstates);
 }
 
 static void _sde_crtc_swap_mixers_for_right_partial_update(

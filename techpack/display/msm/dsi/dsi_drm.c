@@ -151,10 +151,7 @@ void dsi_convert_to_drm_mode(const struct dsi_display_mode *dsi_mode,
 	/* please refer the qcom check logic in the file init.qcom.early_boot.sh */
 	/* set mode name */
 	if (oplus_adfr_is_support()) {
-		snprintf(drm_mode->name, DRM_DISPLAY_MODE_LEN, "%dx%dx%dx%d%sx%d",
-				drm_mode->hdisplay, drm_mode->vdisplay, drm_mode->vrefresh,
-				dsi_mode->vsync_source, video_mode ? "vid" : "cmd",
-				drm_mode->clock);
+	*drm_mode->name = '\0';
 	} else {
 	*drm_mode->name = '\0';
 	}
